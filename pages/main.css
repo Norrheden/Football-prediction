@@ -1,0 +1,73 @@
+:root {
+    --white: #F1F8E9;
+    --darkGreen: #2ECC71;
+    --green: #58D68D;
+    --darkBlue: #1C2833;
+    --greyBlue: #2d3b48;
+}
+
+
+body {
+    font-family: "Roboto";
+    margin: 0;
+    box-sizing: border-box;
+    background-color: var(--darkBlue);
+    padding: 0;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    background-color: var(--darkGreen);
+    padding: 5px;
+    height: 60px; 
+    flex-shrink: 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex: 1; 
+}
+
+
+
+button {
+    height: 65px;
+    width: 170px;
+}
+h1 {
+    margin: 0;
+    font-size: 40px;
+    border-bottom: 1px solid var(--green);
+    padding: 10px;
+}
+button {
+    font-family: "Roboto";
+    margin: 0 15px;
+    background-color: var(--greyBlue);
+    border: none;
+    border-radius: 30px;
+    color: var(--white);
+    box-shadow: 0px 5px 10px black
+}
+button:hover {
+    background-color: #404c57
+}
+
+
+
+.leaguesButton {
+    margin-top: 40px;
+
+}
+
+.logo {
+    margin-left: 10px;
+}
+
+
