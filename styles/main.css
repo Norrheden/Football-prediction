@@ -29,7 +29,6 @@ header {
 main {
     display: flex;
     justify-content: center;
-    align-items: center;
     text-align: center;
     flex: 1; 
 }
@@ -55,8 +54,10 @@ button {
     color: var(--white);
     box-shadow: 0px 5px 10px black
 }
+
 button:hover {
-    background-color: #404c57
+    background-color: #404c57;
+    cursor: pointer;
 }
 
 
@@ -68,6 +69,10 @@ button:hover {
 
 .logo {
     margin-left: 10px;
+}
+
+.frontPageBlock {
+    margin-top: 200px;
 }
 
 

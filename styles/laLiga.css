@@ -1,0 +1,16 @@
+:root {
+    --white: #F1F8E9;
+    --darkGreen: #2ECC71;
+    --green: #58D68D;
+    --darkBlue: #1C2833;
+    --greyBlue: #2d3b48;
+}
+
+body {
+    font-family: "Roboto";
+    margin: 0;
+    box-sizing: border-box;
+    background-color: var(--darkBlue);
+    padding: 0;
+    color: var(--white);
+}
