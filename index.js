@@ -225,4 +225,3 @@ function setUptheLeague(nameOfTheLeague) {
 }
 
 
-setUptheLeague("premierLeague")
