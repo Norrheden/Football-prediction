@@ -119,48 +119,101 @@ function setUptheLeague(nameOfTheLeague) {
         if(league.league === nameOfTheLeague) {
             for(let i = 0; i<league.teams.length; i++) {
                 let row = document.createElement("div")
+                row.classList.add("row")
+                row.id = `${league.teams[i].team}`
+
                 row.style.display = "flex"
                 row.style.alignItems = "center"
-                row.style.justifyContent = "space-between"
-                row.style.fontSize = "20px"
+                row.style.fontSize = "18px"
                 
-                row.style.padding = "7px"
+                row.style.padding = "6px"
                 row.style.fontWeight = "bold"
-                if(i%2 === 0) {
-                    row.style.background = "#2d3b48"
-                } else {
-                    row.style.background = "#2d3b48;"
-                }
-
-                if(i === 16) {
-                    row.style.borderBottom = "2px solid red"
-                }
-                if(i === 4) {
-                    row.style.borderTop = "2px solid blue"
-                }
+                row.style.border = "1px solid #2d3b48"
+                
                 
 
                 let number = document.createElement("div");
                 number.textContent = `${i+1}.`
-                number.style.marginRight = "30px"
+                if(i > 8) {
+                    number.style.marginRight = "20px"
 
+
+                } else {
+                    number.style.marginRight = "30px"
+                    
+
+                }
                 row.appendChild(number)
-                let team = document.createElement("div");
-                team.textContent = league.teams[i].team;
-                row.appendChild(team);
 
                 let color = document.createElement("div")
                 color.style.background = league.teams[i].color 
                 color.style.width = "20px"
                 color.style.height = "20px"
-                color.style.marginLeft = "30px"
-                
+                color.style.marginRight = "30px"
                 row.appendChild(color)
+
+                let team = document.createElement("div");
+                team.textContent = league.teams[i].team;
+                row.appendChild(team);
+
+                
                 
                
                 
                 table.appendChild(row);
 
+
+                row.draggable = true;
+
+                row.addEventListener("dragstart", event => {
+                    event.dataTransfer.setData("text/plain", row.id); 
+                });
+
+                row.addEventListener("dragover", event => {
+                    event.preventDefault(); 
+                    row.style.opacity = "0.5"
+                });
+
+                row.addEventListener("dragleave", event => {
+                    event.preventDefault();
+                    row.style.opacity = "1"
+                })
+
+                row.addEventListener("drop", event => {
+                    event.preventDefault();
+                    row.style.opacity = "1"
+                    const draggedRowId = event.dataTransfer.getData("text/plain"); 
+                    const draggedRow = document.getElementById(draggedRowId); 
+
+                    if (draggedRow && draggedRow !== row) {
+                        
+                        const parent = row.parentNode;
+
+                        const nextSibling = row.nextSibling === draggedRow ? row : row.nextSibling;
+
+                        parent.insertBefore(row, draggedRow);
+                        parent.insertBefore(draggedRow, nextSibling);
+
+                        updateRowNumbers(parent);
+                    }
+                    console.log("Dropped:", draggedRowId, "on", row.id);
+                });
+
+                function updateRowNumbers(parent) {
+                    const rows = parent.children;
+                    for (let i = 0; i < rows.length; i++) {
+                        const numberElement = rows[i].querySelector("div:first-child"); 
+                        if (numberElement) {
+                            numberElement.textContent = `${i + 1}.`; 
+
+                            if (i > 8) {
+                                numberElement.style.marginRight = "20px";
+                            } else {
+                                numberElement.style.marginRight = "30px";
+                            }
+                        }
+                    }
+                }
 
 
 
