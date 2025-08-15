@@ -13,10 +13,10 @@ body {
     background-color: var(--darkBlue);
     padding: 0;
     color: var(--white);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 #table {
